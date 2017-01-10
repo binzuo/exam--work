@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="work">
+    <insert id="add" parameterType="work" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO exam.work (
+    worknumber, 
+    workname, 
+    workduty, 
+    workneed, 
+    worknote
+        )
+        VALUES (
+    #{worknumber}, 
+    #{workname}, 
+    #{workduty}, 
+    #{workneed}, 
+    #{worknote}
+        );
+    </insert>
+    <delete id="remove">
+        DELETE FROM exam.work
+        WHERE work.id = #{id}
+    </delete>
+    <update id="modify">
+        UPDATE exam.work
+        SET
+    worknumber = #{worknumber}, 
+    workname = #{workname}, 
+    workduty = #{workduty}, 
+    workneed = #{workneed}, 
+    worknote = #{worknote}
+        WHERE work.id = #{id}
+    </update>
+    <select id="list" resultType="work">
+        SELECT *
+        FROM exam.work
+        ORDER BY id
+    </select>
+    <select id="query" parameterType="work" resultType="work">
+        SELECT *
+        FROM exam.work
+        <where>
+            <if test="id != null and id != ''">
+            work.id = #{id}
+            </if>
+            <if test="worknumber != null and worknumber != ''"> AND worknumber LIKE "%"#{worknumber}"%"</if>
+            <if test="workname != null and workname != ''"> AND workname LIKE "%"#{workname}"%"</if>
+            <if test="workduty != null and workduty != ''"> AND workduty LIKE "%"#{workduty}"%"</if>
+            <if test="workneed != null and workneed != ''"> AND workneed LIKE "%"#{workneed}"%"</if>
+            <if test="worknote != null and worknote != ''"> AND worknote LIKE "%"#{worknote}"%"</if>
+        </where>
+    </select>
+    <select id="search" resultType="work">
+        SELECT *
+        FROM exam.work
+        WHERE work.id = #{id}
+    </select>
+</mapper>

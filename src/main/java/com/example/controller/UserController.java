@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.model.User;
 import com.example.service.UserService;
+import com.example.service.WorkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController extends BaseController {
 
     private final UserService userService;
+    private final WorkService workService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService,WorkService workService) {
         this.userService = userService;
+        this.workService=workService;
     }
 
     @RequestMapping("register")
@@ -37,9 +40,10 @@ public class UserController extends BaseController {
         if (user != null) {
             getSession().setAttribute("user", user);
             if (user.getRole().equals("admin")) {
-                return "redirect:/admin.jsp";
+                return "redirect:/work/index.jsp";
             }
             if (user.getRole().equals("user")) {
+                getSession().setAttribute("pagination", workService.list(1));
                 return "redirect:/user.jsp";
             }
             return "redirect:/index.jsp";

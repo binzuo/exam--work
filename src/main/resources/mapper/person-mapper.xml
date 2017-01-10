@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="person">
+    <insert id="add" parameterType="person" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO exam.person (
+    username, 
+    sex, 
+    xueli, 
+    major, 
+    skill, 
+    workId
+        )
+        VALUES (
+    #{username}, 
+    #{sex}, 
+    #{xueli}, 
+    #{major}, 
+    #{skill}, 
+    #{workId}
+        );
+    </insert>
+    <delete id="remove">
+        DELETE FROM exam.person
+        WHERE person.id = #{id}
+    </delete>
+    <update id="modify">
+        UPDATE exam.person
+        SET
+    username = #{username}, 
+    sex = #{sex}, 
+    xueli = #{xueli}, 
+    major = #{major}, 
+    skill = #{skill}, 
+    workId = #{workId}
+        WHERE person.id = #{id}
+    </update>
+    <select id="list" resultType="person">
+        SELECT *
+        FROM exam.person
+        ORDER BY id
+    </select>
+    <select id="query" parameterType="person" resultType="person">
+        SELECT *
+        FROM exam.person
+        <where>
+            <if test="id != null and id != ''">
+            person.id = #{id}
+            </if>
+            <if test="username != null and username != ''"> AND username LIKE "%"#{username}"%"</if>
+            <if test="sex != null and sex != ''"> AND sex LIKE "%"#{sex}"%"</if>
+            <if test="xueli != null and xueli != ''"> AND xueli LIKE "%"#{xueli}"%"</if>
+            <if test="major != null and major != ''"> AND major LIKE "%"#{major}"%"</if>
+            <if test="skill != null and skill != ''"> AND skill LIKE "%"#{skill}"%"</if>
+            <if test="workId != null and workId != ''"> AND workId LIKE "%"#{workId}"%"</if>
+        </where>
+    </select>
+    <select id="search" resultType="person">
+        SELECT *
+        FROM exam.person
+        WHERE person.id = #{id}
+    </select>
+</mapper>
