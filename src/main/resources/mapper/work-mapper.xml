@@ -58,4 +58,9 @@
         FROM exam.work
         WHERE work.id = #{id}
     </select>
+    <select id="queryWorkNameById" parameterType="int" resultType="work">
+        SELECT*
+        FROM exam.work
+        WHERE id=#{id}
+    </select>
 </mapper>

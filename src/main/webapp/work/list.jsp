@@ -20,7 +20,7 @@
                 <th>WORKDUTY</th>
                 <th>WORKNEED</th>
                 <th>WORKNOTE</th>
-                <th colspan="2">OPERATION</th>
+                <th colspan="3">OPERATION</th>
             </tr>
             <c:forEach var="work" items="${sessionScope.pagination.list}" varStatus="vs">
             <tr>
@@ -32,6 +32,7 @@
                 <td>${work.worknote}</td>
                 <td><a href="${ctx}/work/search/${work.id}">EDIT</a></td>
                 <td><a class="delete" href="${ctx }/work/remove/${work.id}" onclick="return del()">REMOVE</a></td>
+                <td><a href="${ctx}/person/list">查看应聘情况</a></td>
             </tr>
             </c:forEach>
         </table>

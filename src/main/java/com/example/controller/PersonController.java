@@ -1,5 +1,4 @@
 package com.example.controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +37,8 @@ public class PersonController extends BaseController {
 
     @RequestMapping("list/{page}")
     private String list(@PathVariable int page) {
-        getSession().setAttribute("pagination", personService.list(page));
+        //getSession().setAttribute("pagination", personService.list(page));
+        getSession().setAttribute("pagination",personService.query(1,"queryPerson",null));
         return "redirect:/person/list.jsp";
     }
 

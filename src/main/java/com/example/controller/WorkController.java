@@ -52,4 +52,12 @@ public class WorkController extends BaseController {
         getSession().setAttribute("work", workService.search(id));
         return "redirect:/work/edit.jsp";
     }
+    @RequestMapping("query/{id}")
+    private String query(@PathVariable("id") Integer id) {
+        getSession().setAttribute("work", workService.queryAll("queryWorkNameById",id));
+
+        return "redirect:/person/add.jsp";
+    }
+
+
 }

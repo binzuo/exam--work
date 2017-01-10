@@ -67,3 +67,13 @@ SELECT *
 FROM exam.work;
 SELECT *
 FROM exam.person;
+SELECT
+  w.workname,
+  p.id,
+  p.username,
+  p.sex,
+  p.xueli,
+  p.major,
+  p.skill
+FROM exam.work w INNER JOIN exam.person p ON w.id = p.workId
+WHERE p.id=1;

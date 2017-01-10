@@ -18,4 +18,5 @@ public class Person extends BaseModel {
     private String major;
     private String skill;
     private int workId;
+    private  Work work;
 }

@@ -27,7 +27,7 @@ user: ${sessionScope.user.username}<br/>
             <td>${work.workduty}</td>
             <td>${work.workneed}</td>
             <td>${work.worknote}</td>
-            <td><a href="${ctx}/person/add.jsp">应聘</a></td>
+            <td><a href="${ctx}/work/query/${work.id}">应聘</a></td>
             </tr>
     </c:forEach>
 </table>

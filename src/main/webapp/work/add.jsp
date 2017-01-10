@@ -7,6 +7,7 @@
     <body>
         <h1>ADD Work</h1>
         <form action="${ctx}/work/add" method="post">
+
             <input name="worknumber" placeholder="WORKNUMBER"><br>
             <input name="workname" placeholder="WORKNAME"><br>
             <input name="workduty" placeholder="WORKDUTY"><br>
