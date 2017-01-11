@@ -38,7 +38,7 @@ public class PersonController extends BaseController {
     @RequestMapping("list/{page}")
     private String list(@PathVariable int page) {
         //getSession().setAttribute("pagination", personService.list(page));
-        getSession().setAttribute("pagination",personService.query(1,"queryPerson",null));
+        //getSession().setAttribute("pagination",personService.query(1,"queryPerson",null));
         return "redirect:/person/list.jsp";
     }
 

@@ -32,7 +32,7 @@
                 <td>${work.worknote}</td>
                 <td><a href="${ctx}/work/search/${work.id}">EDIT</a></td>
                 <td><a class="delete" href="${ctx }/work/remove/${work.id}" onclick="return del()">REMOVE</a></td>
-                <td><a href="${ctx}/person/list">查看应聘情况</a></td>
+                <td><a href="${ctx}/work/querypersonbyworkId/${work.id}">查看应聘情况</a></td>
             </tr>
             </c:forEach>
         </table>

@@ -58,6 +58,13 @@ public class WorkController extends BaseController {
 
         return "redirect:/person/add.jsp";
     }
+    @RequestMapping("querypersonbyworkId/{id}")
+    private String querypersonbyworkId(@PathVariable("id") Integer id) {
+        getSession().setAttribute("pagination", workService.query(1,"querypersonbyworkId",id));
+
+        return "redirect:/person/list.jsp";
+    }
+
 
 
 }
