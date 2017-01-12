@@ -32,8 +32,8 @@
             </tr>
         </c:forEach>
     </table>
-        <c:import url="${ctx}/commons/page.jsp">
-            <c:param name="path" value="person/${sessionScope.pagination.statement}"/>
-        </c:import>
+    <c:import url="${ctx}/commons/page.jsp">
+        <c:param name="path" value="work/${sessionScope.pagination.statement}"/>
+    </c:import>
     </body>
 </html>

@@ -44,6 +44,7 @@ public class UserController extends BaseController {
             }
             if (user.getRole().equals("user")) {
                 getSession().setAttribute("pagination", workService.list(1));
+                //getSession().setAttribute("pagination", workService.list(1));
                 return "redirect:/user.jsp";
             }
             return "redirect:/index.jsp";

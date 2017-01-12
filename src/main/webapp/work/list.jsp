@@ -32,12 +32,34 @@
                 <td>${work.worknote}</td>
                 <td><a href="${ctx}/work/search/${work.id}">EDIT</a></td>
                 <td><a class="delete" href="${ctx }/work/remove/${work.id}" onclick="return del()">REMOVE</a></td>
-                <td><a href="${ctx}/work/querypersonbyworkId/${work.id}">查看应聘情况</a></td>
+                <td><a href="${ctx}/person/querypersonbyworkId/${work.id}">查看应聘情况</a></td>
             </tr>
             </c:forEach>
         </table>
         <c:import url="${ctx}/commons/page.jsp">
             <c:param name="path" value="work/${sessionScope.pagination.statement}"/>
         </c:import>
+        <h1>各岗位应聘情况</h1>
+        <table border="1">
+            <tr>
+                <th>WORKNAME</th>
+                <th>USERNAME</th>
+                <th>SEX</th>
+                <th>XUELI</th>
+                <th>MAJOR</th>
+                <th>SKILL</th>
+            </tr>
+            <c:forEach var="person" items="${sessionScope.pagination1.list}" varStatus="vs">
+                <tr>
+                    <td>${person.work.workname}</td>
+                    <td>${person.username}</td>
+                    <td>${person.sex}</td>
+                    <td>${person.xueli}</td>
+                    <td>${person.major}</td>
+                    <td>${person.skill}</td>
+                </tr>
+            </c:forEach>
+        </table>
+
     </body>
 </html>

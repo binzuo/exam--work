@@ -1,4 +1,5 @@
 package com.example.controller;
+import com.example.service.WorkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -11,10 +12,12 @@ import com.example.service.PersonService;
 public class PersonController extends BaseController {
 
     private final PersonService personService;
+    private final WorkService workService;
 
     @Autowired
-    public PersonController(PersonService personService) {
+    public PersonController(PersonService personService,WorkService workService) {
         this.personService = personService;
+        this.workService=workService;
     }
 
     @RequestMapping("add")
@@ -51,5 +54,11 @@ public class PersonController extends BaseController {
     private String search(@PathVariable("id") Integer id) {
         getSession().setAttribute("person", personService.search(id));
         return "redirect:/person/edit.jsp";
+    }
+    @RequestMapping("querypersonbyworkId/{id}")
+    private String querypersonbyworkId(@PathVariable("id") Integer id) {
+        getSession().setAttribute("pagination1", personService.query(1,"querypersonbyworkId",id));
+        getSession().setAttribute("pagination", workService.list(1));
+        return "redirect:/work/list.jsp";
     }
 }

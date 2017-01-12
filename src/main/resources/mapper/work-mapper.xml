@@ -63,27 +63,5 @@
         FROM exam.work
         WHERE id=#{id}
     </select>
-    <resultMap id="map_queryPerson" type="person">
-        <id property="id" column="id"/>
-        <result property="username" column="username"/>
-        <result property="sex" column="sex"/>
-        <result property="xueli" column="xueli"/>
-        <result property="major" column="major"/>
-        <result property="skill" column="skill"/>
-        <association property="work" javaType="work">
-            <result property="workname" column="workname"/>
-        </association>
-    </resultMap>
-    <select id="querypersonbyworkId" parameterType="int" resultMap="map_queryPerson">
-        SELECT
-        w.workname,
-        p.id,
-        p.username,
-        p.sex,
-        p.xueli,
-        p.major,
-        p.skill
-        FROM exam.work w INNER JOIN exam.person p ON w.id = p.workId
-        WHERE w.id=#{id}
-    </select>
+
 </mapper>
